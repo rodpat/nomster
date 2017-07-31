@@ -32,3 +32,15 @@ body{
   font-family: 'quicksandbold';
   font-size: 26px;
 }
+
+.page-item.active .page-link{
+  background-color: #292b2c;
+  border-color: #292b2c;
+}
+
+.page-link {
+  color: #292b2c;
+}
+
+
+

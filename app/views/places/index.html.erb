@@ -3,6 +3,12 @@
       <h1><%= place.name %></h1>
       <i><%= place.address%></i><br/><br/>
       <p><%= place.description %></p><br/>
+
     </div>
+    
 <% end %>
 
+<!--<%= will_paginate @places, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label:"Newer" %>-->
+<div class="col-10  pagination justify-content-center offset-1">
+  <%= will_paginate( @places, :renderer=> WillPaginate::ActionView::Bootstrap4LinkRenderer ) %>
+</div>
