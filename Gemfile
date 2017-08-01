@@ -66,3 +66,6 @@ gem 'bootstrap-will_paginate'
 
 #form to add new places
 gem 'simple_form'
+
+#font awesome gem
+gem 'font-awesome-rails'
