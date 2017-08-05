@@ -70,4 +70,10 @@ gem 'simple_form'
 #font awesome gem
 gem 'font-awesome-rails'
 
+# 
 gem 'devise'
+
+# geocoder 
+gem "geocoder"
+
+gem 'figaro'
