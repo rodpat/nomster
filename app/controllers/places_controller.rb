@@ -3,6 +3,7 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all.order("created_at DESC").paginate(page: params[:page], :per_page =>10)
+    @photo = Photo.new
   end
 
   def new
@@ -22,6 +23,7 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
     @comment = Comment.new
+    @photo = Photo.new
   end
 
   def edit

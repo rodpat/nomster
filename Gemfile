@@ -77,3 +77,9 @@ gem 'devise'
 gem "geocoder"
 
 gem 'figaro'
+
+#gem to add photos
+gem 'carrierwave', '~> 1.0'
+
+#set up carrierwave with ASW
+gem "fog-aws"
