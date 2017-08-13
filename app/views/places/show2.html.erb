@@ -83,11 +83,8 @@
        <div class="col-12 ">
           <% @place.photos.each do |photo| %>
             <div class="photo">
-              <%= image_tag photo.picture, class: 'img-fluid center-block image'  %>
-              <div class="overlay">
-                <p><%=  photo.caption %></p>
-              </div>
-             
+              <%= image_tag photo.picture, class: 'img-fluid'  %>
+             <p><%=  photo.caption %></p>
             </div>
              
           <% end %>
