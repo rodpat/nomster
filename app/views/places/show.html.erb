@@ -37,11 +37,8 @@
         
   </div>
   <div class="clear"></div>
-       
-    
-
 </div>
-<% if @place.photos.present? %>
+
 <div class="booyah-box col-10 offset-1">
   <!-- Button trigger modal -->
   <h1 class="float-left">Photos</h1>
@@ -51,6 +48,7 @@
   </button>
   <% end %>
   <br>
+
   <!-- Modal Photos-->
     <div class="modal fade" id="myModalPhotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -80,7 +78,7 @@
 <!-- Shows Photos --> 
 
   <div class="clear"></div>
-   
+   <% if @place.photos.present? %>
     <div class="row">
        <div class="col-12 ">
           <% @place.photos.each do |photo| %>
@@ -93,8 +91,12 @@
       </div>   
       
     </div>
+  <% else %>
+    <p>There is no photos for this place yet :(</p>
+  <% end %>
 </div>
-<% end %>
+
+
 <div class="clear"></div>
 
 <!-- Modal Comments-->
@@ -124,8 +126,7 @@
     </div>
 
 <!-- Shows comments --> 
-<br>
-<div class=" col-10 offset-1"> 
+<div class="booyah-box col-10 offset-1"> 
   <h1 class="float-left">Comments</h1>
   <!-- Button trigger modal -->
   <% if current_user && current_user == @place.user %>
@@ -135,19 +136,24 @@
   <% end %>
 
   <div class="clear"></div>
-      <div class="row">
-       <% @place.comments.each do |comment| %>
-        <div class="col-12 col-sm-6">
-          <blockquote>
-            <% if comment.humanized_rating.present? %>
-              <b><%= comment.humanized_rating %></b> - 
-            <% end %>
-            <%= comment.message %>
-            <small><%= comment.user.email %></small>
-          </blockquote>
-        </div>
-        <% end %>
+  <% if @place.comments.present? %>
+  <div class="row">
+    <% @place.comments.each do |comment| %>
+      <div class="col-12 col-sm-6">
+        <blockquote>
+          <% if comment.humanized_rating.present? %>
+            <b><%= comment.humanized_rating %></b> - 
+          <% end %>
+          <%= comment.message %>
+          <small><%= comment.user.email %></small>
+        </blockquote>
       </div>
+    <% end %>
+  </div>
+  <% else %>
+    <p>There is no comments for this place yet :(</p>
+  <% end %>
+   
 </div>  
 
 
