@@ -34,44 +34,54 @@
   </a>
 </div>
 
+<br>
 
-<% @places.each do |place| %>
-    <div class="booyah-box col-10 offset-1">
-    <% if place.photos.present? %>
-      <div class="photos-index float-right">
-        <%= image_tag place.photos.last.picture, class: 'img-fluid' %>
-      </div>  
-      <% end %>
-      <h1><%= link_to place.name, place_path(place) %></h1>
+    <div class="col-12 col-md-10 offset-md-1">
+    <% @places.each do |place| %>
+    <div class="booyah-box">
+      <div class="row">
+        <div class="col-12 col-md-9 ">
+           <h1><%= link_to place.name, place_path(place), class: 'nounderline name-places' %></h1>
+           <p><i><%= place.address%></i></p>
+           <p ><em><%= place.description %></em></p>
+          
+            <% if place.user.present? %>
+              <small><%= place.user.email %></small>
+            <% end %>
+        </div>
 
-      
-      <i><%= place.address%></i><br/><br/>
-      <p ><%= place.description %></p><br/>
-      
-      <% if place.user.present? %>
-        <small><%= place.user.email %></small>
-      <% end %>
-    
-      <% if place.comments.present? %>
-      
-        <blockquote>
-          <% if place.comments.last.humanized_rating.present? %>
-            <b><%= place.comments.last.humanized_rating %></b> - 
-          <% end %>
-          <%= place.comments.last.message %>
-          <small><%= place.comments.last.user.email %></small>
-        </blockquote>
-    
-     <% end %> 
-     <div class="clear"></div>
-     
-    </div>
-   
-<% end %>
+        <div class="col-12 col-md-3">
+         <% if place.photos.present? %> 
+           <div class="photos-index float-right">
+            <%= image_tag place.photos.last.picture, class: 'img-fluid' %>
+          </div>  
+         <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <% if place.comments.present? %>
+            <blockquote>
+              <% if place.comments.last.humanized_rating.present? %>
+                  <b><%= place.comments.last.humanized_rating %></b> - 
+              <% end %>
+              <em><%= place.comments.last.message %></em>
+              <br>
+                <small><cite><%= place.comments.last.user.email %></cite></small>
+            </blockquote>
+          <% end %> 
+        </div>
+        
+      </div>
+  </div>
+  <% end %>
+   </div>
 
-<!--<%= will_paginate @places, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label:"Newer" %>-->
+
+
 <div class="col-10  pagination justify-content-center offset-1">
   <%= will_paginate( @places, :renderer=> WillPaginate::ActionView::Bootstrap4LinkRenderer, 
     :previous_label => '<i class="fa fa-arrow-circle-left " aria-hidden="true"></i>',
     :next_label => '<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>' ) %>
 </div>
+
